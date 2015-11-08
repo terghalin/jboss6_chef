@@ -2,7 +2,7 @@
 ===============
 This particular cookbook will install MySQL server and Jboss AS 6, then application will be deployed as well.
 
-To check this task, just launch vagrant.
+To check this cookbook, just launch vagrant.
 
 Launch Vagrant
 -----
