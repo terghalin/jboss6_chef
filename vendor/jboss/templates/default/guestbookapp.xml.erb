@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cumulogic-app>
+  <single-vm>false</single-vm>
+<application>
+  <application-context>guestbookapp</application-context>
+  <jndi-name>java:/MySqlDS</jndi-name>
+  <db-name>guestbook</db-name>
+  <db-type>MySql</db-type>
+ <application-file-name>guestbookapp.war</application-file-name>
+ <bind-global-services>true</bind-global-services>
+</application>
+
+ <services>
+    <framework>
+      <type>Java EE</type>
+      <engine>Jboss-6.0.0</engine>
+      <no-of-nodes>1</no-of-nodes>
+      <max-nodes>2</max-nodes>
+    </framework>
+    <database>
+      <engine>MySQL-5.5.27</engine>
+      <no-of-nodes>1</no-of-nodes>
+      <storage>10</storage>
+      <config>
+        <master-username>demo</master-username>
+        <master-password>demodemo</master-password>
+        <port>3306</port>
+        <character-set>UTF-8</character-set>
+      </config>
+<external-host></external-host>
+    </database>
+  </services>
+</cumulogic-app>

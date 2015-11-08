@@ -1,0 +1,10 @@
+{
+    "name": "mysql",
+    "description": "Mysql Role",
+    "chef_environment": "development",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[mysql]"
+    ]
+}

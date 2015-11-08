@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# description: Simple init script for JBoss
+#
+#
+
+jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+
+function start() {
+jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+    if [ -z "${jboss_running}" ] ; then
+	echo "Starting JBoss"
+	cd <%=node['jboss']['path']%>/bin
+	sudo -u <%=node['jboss']['user']%> sh ./run.sh -c default --host=0.0.0.0 > /dev/null 2>&1 &
+    else
+	echo "JBoss is already running."
+    fi
+}
+
+function stop() {
+jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+    if [ -z "${jboss_running}" ] ; then
+	echo "JBoss is not running."
+    else
+	echo "Stopping JBoss"
+	cd <%=node['jboss']['path']%>/bin
+	sudo -u <%=node['jboss']['user']%> ./shutdown.sh -S -r 1090 > /dev/null 2>&1 &
+        sleep 5
+
+jboss_pid=$(ps -ef | grep java | grep -v grep | awk '{ printf $2" " }')
+        if [ ! -z "${jboss_pid}" ] ; then
+            kill -9 ${jboss_pid}
+        fi
+    fi
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        stop
+	sleep 5
+	start
+    ;;
+    *)
+        echo "Usage: '/etc/init.d/jboss {start|stop|restart}'"
+        exit 1
+    ;;
+esac

@@ -1,0 +1,7 @@
+default["jboss"]["url"] = "http://sourceforge.net/projects/jboss/files/JBoss/JBoss-6.0.0.Final/jboss-as-distribution-6.0.0.Final.zip/download"
+default["jboss"]["mysql_con_url"] = "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz"
+default["jboss"]["path"] = "/opt/jboss"
+default["jboss"]["mysql_modpath"] = "/opt/jboss/server/default/lib"
+default["jboss"]["tmp"] = "/opt/jboss/tmp"
+default["jboss"]["user"] = "jboss"
+default["jboss"]["checksum"] = "8a3be1afd0006f44bb01c79f5b117daed760bba2f22437effef5c2ab85a1ec1d"

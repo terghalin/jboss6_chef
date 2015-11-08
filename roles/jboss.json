@@ -1,0 +1,10 @@
+{
+    "name": "jboss",
+    "description": "Jboss Role",
+    "chef_environment": "development",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[jboss]"
+    ]
+}

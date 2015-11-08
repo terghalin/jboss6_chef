@@ -1,0 +1,11 @@
+name 'jboss'
+maintainer 'terghalin'
+maintainer_email 'terghalin@gmail.com'
+license 'all_rights'
+description 'Installs/Configures Jboss App Server'
+long_description 'Installs/Configures Jboss App Server'
+version '1.4.8'
+
+depends 'apt'
+depends 'firewall'
+depends 'mysql'

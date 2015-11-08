@@ -1,0 +1,271 @@
+chef-client.vs.local Existing Chef installation detected
+chef-client.vs.local Starting the first Chef Client run...
+chef-client.vs.local Starting Chef Client, version 12.5.1
+chef-client.vs.local resolving cookbooks for run list: ["jboss"]
+chef-client.vs.local Synchronizing Cookbooks:
+chef-client.vs.local   - jboss (1.4.8)
+chef-client.vs.local   - apt (2.9.2)
+chef-client.vs.local   - mysql (6.1.2)
+chef-client.vs.local   - yum-mysql-community (0.1.19)
+chef-client.vs.local   - yum (3.8.2)
+chef-client.vs.local   - firewall (2.2.0)
+chef-client.vs.local   - smf (2.2.7)
+chef-client.vs.local   - rbac (1.0.3)
+chef-client.vs.local   - chef-sugar (3.1.1)
+chef-client.vs.local Compiling Cookbooks...
+chef-client.vs.local Converging 23 resources
+chef-client.vs.local Recipe: jboss::setup
+chef-client.vs.local   * apt_repository[webupd8team-java] action add
+chef-client.vs.local     * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+chef-client.vs.local     * execute[apt-cache gencaches] action nothing (skipped due to action :nothing)
+chef-client.vs.local     * execute[apt-get update] action nothing (skipped due to action :nothing)
+chef-client.vs.local     * execute[install-key 7B2C3B0889BF5709A105D03AC2518248EEA14886] action run
+chef-client.vs.local       - execute apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7B2C3B0889BF5709A105D03AC2518248EEA14886
+chef-client.vs.local     * ruby_block[validate-key 7B2C3B0889BF5709A105D03AC2518248EEA14886] action run (skipped due to not_if)
+chef-client.vs.local     * file[/etc/apt/sources.list.d/webupd8team-java.list] action create
+chef-client.vs.local       - create new file /etc/apt/sources.list.d/webupd8team-java.list
+chef-client.vs.local       - update content in file /etc/apt/sources.list.d/webupd8team-java.list from none to d66648
+chef-client.vs.local       --- /etc/apt/sources.list.d/webupd8team-java.list	2015-11-08 22:34:49.791132000 +0400
+chef-client.vs.local       +++ /etc/apt/sources.list.d/.webupd8team-java.list20151108-3972-wcpzlr	2015-11-08 22:34:49.791132000 +0400
+chef-client.vs.local       @@ -1 +1,2 @@
+chef-client.vs.local       m+deb     "http://ppa.launchpad.net/webupd8team/java/ubuntu" trusty main
+chef-client.vs.local       - change mode from '' to '0644'
+chef-client.vs.local       - change owner from '' to 'root'
+chef-client.vs.local       - change group from '' to 'root'
+chef-client.vs.local     * file[/var/lib/apt/periodic/update-success-stamp] action delete
+chef-client.vs.local       - delete file /var/lib/apt/periodic/update-success-stamp
+chef-client.vs.local     * execute[apt-get update] action run
+chef-client.vs.local       - execute apt-get update -o Dir::Etc::sourcelist='sources.list.d/webupd8team-java.list' -o Dir::Etc::sourceparts='-' -o APT::Get::List-Cleanup='0'
+chef-client.vs.local     * execute[apt-cache gencaches] action run
+chef-client.vs.local       - execute apt-cache gencaches
+chef-client.vs.local 
+chef-client.vs.local   * apt_package[zip] action install (up to date)
+chef-client.vs.local   * execute[accept-license] action run
+chef-client.vs.local     - execute echo oracle-java6-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+chef-client.vs.local   * apt_package[oracle-java6-installer] action install
+chef-client.vs.local     - install version 6u45-0~webupd8~8 of package oracle-java6-installer
+chef-client.vs.local   * apt_package[oracle-java6-set-default] action install
+chef-client.vs.local     - install version 6u45-0~webupd8~8 of package oracle-java6-set-default
+chef-client.vs.local   * user[jboss] action create
+chef-client.vs.local     - create user jboss
+chef-client.vs.local   * directory[/opt/jboss] action create
+chef-client.vs.local     - create new directory /opt/jboss
+chef-client.vs.local     - change mode from '' to '0755'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * directory[/opt/jboss/tmp] action create
+chef-client.vs.local     - create new directory /opt/jboss/tmp
+chef-client.vs.local     - change mode from '' to '0755'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * remote_file[/opt/jboss/tmp/jboss.zip] action create
+chef-client.vs.local     - create new file /opt/jboss/tmp/jboss.zip
+chef-client.vs.local     - update content in file /opt/jboss/tmp/jboss.zip from none to 8a3be1
+chef-client.vs.local     (file sizes exceed 10000000 bytes, diff output suppressed)
+chef-client.vs.local     - change mode from '' to '0755'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * remote_file[/opt/jboss/tmp/mysql-connector.tar.gz] action create
+chef-client.vs.local     - create new file /opt/jboss/tmp/mysql-connector.tar.gz
+chef-client.vs.local     - update content in file /opt/jboss/tmp/mysql-connector.tar.gz from none to 01e2f1
+chef-client.vs.local     (new content is binary, diff output suppressed)
+chef-client.vs.local     - change mode from '' to '0755'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * execute[extract_jboss] action run
+chef-client.vs.local     - execute unzip -o -d /opt/jboss/tmp jboss.zip
+chef-client.vs.local   * execute[extract_mysql_connector] action run
+chef-client.vs.local     - execute tar -xzvf mysql-connector.tar.gz
+chef-client.vs.local   * execute[move_jboss] action run
+chef-client.vs.local     - execute mv -f /opt/jboss/tmp/jboss-6.0.0.Final/* /opt/jboss/
+chef-client.vs.local   * execute[move_mysql_connector] action run
+chef-client.vs.local     - execute mv /opt/jboss/tmp/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar /opt/jboss/server/default/lib/
+chef-client.vs.local   * template[/opt/jboss/server/default/deploy/mysql-ds.xml] action create
+chef-client.vs.local     - create new file /opt/jboss/server/default/deploy/mysql-ds.xml
+chef-client.vs.local     - update content in file /opt/jboss/server/default/deploy/mysql-ds.xml from none to 4ea785
+chef-client.vs.local     --- /opt/jboss/server/default/deploy/mysql-ds.xml	2015-11-08 22:37:24.323132000 +0400
+chef-client.vs.local     +++ /opt/jboss/server/default/deploy/.mysql-ds.xml20151108-3972-o9w6ef	2015-11-08 22:37:24.323132000 +0400
+chef-client.vs.local     @@ -1 +1,20 @@
+chef-client.vs.local     +<?xml version="1.0" encoding="UTF-8"?>
+chef-client.vs.local     +<datasources>
+chef-client.vs.local     +  <local-tx-datasource>
+chef-client.vs.local     +
+chef-client.vs.local     +    <jndi-name>MySqlGBDS</jndi-name>
+chef-client.vs.local     +    <connection-url>jdbc:mysql://127.0.0.1:3306/guestbook</connection-url>
+chef-client.vs.local     +    <driver-class>com.mysql.jdbc.Driver</driver-class>
+chef-client.vs.local     +    <user-name>root</user-name>
+chef-client.vs.local     +    <password>epampass</password>
+chef-client.vs.local     +
+chef-client.vs.local     +    <min-pool-size>2</min-pool-size>
+chef-client.vs.local     +    <max-pool-size>20</max-pool-size>
+chef-client.vs.local     +    <idle-timeout-minutes>5</idle-timeout-minutes>
+chef-client.vs.local     +
+chef-client.vs.local     +    <exception-sorter-class-name>com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter</exception-sorter-class-name>
+chef-client.vs.local     +    <valid-connection-checker-class-name>com.mysql.jdbc.integration.jboss.MysqlValidConnectionChecker</valid-connection-checker-class-name>
+chef-client.vs.local     +
+chef-client.vs.local     +  </local-tx-datasource>
+chef-client.vs.local     +</datasources>
+chef-client.vs.local     - change mode from '' to '0644'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local Recipe: jboss::init
+chef-client.vs.local   * template[/etc/init.d/jboss] action create
+chef-client.vs.local     - create new file /etc/init.d/jboss
+chef-client.vs.local     - update content in file /etc/init.d/jboss from none to a67339
+chef-client.vs.local     --- /etc/init.d/jboss	2015-11-08 22:37:24.375132000 +0400
+chef-client.vs.local     +++ /etc/init.d/.jboss20151108-3972-19lg5o0	2015-11-08 22:37:24.371132000 +0400
+chef-client.vs.local     @@ -1 +1,54 @@
+chef-client.vs.local     +#!/bin/bash
+chef-client.vs.local     +#
+chef-client.vs.local     +# description: Init script for JBoss 6
+chef-client.vs.local     +#
+chef-client.vs.local     +#
+chef-client.vs.local     +
+chef-client.vs.local     +jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+chef-client.vs.local     +
+chef-client.vs.local     +function start() {
+chef-client.vs.local     +jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+chef-client.vs.local     +    if [ -z "${jboss_running}" ] ; then
+chef-client.vs.local     +	echo "Starting JBoss"
+chef-client.vs.local     +	cd /opt/jboss/bin
+chef-client.vs.local     +	sudo -u jboss sh ./run.sh -c default --host=0.0.0.0 > /dev/null 2>&1 &
+chef-client.vs.local     +    else
+chef-client.vs.local     +	echo "JBoss is already running."
+chef-client.vs.local     +    fi
+chef-client.vs.local     +}
+chef-client.vs.local     +
+chef-client.vs.local     +function stop() {
+chef-client.vs.local     +jboss_running="$(ps -ef | grep /opt/jboss/ | grep -v 'grep')"
+chef-client.vs.local     +    if [ -z "${jboss_running}" ] ; then
+chef-client.vs.local     +	echo "JBoss is not running."
+chef-client.vs.local     +    else
+chef-client.vs.local     +	echo "Stopping JBoss"
+chef-client.vs.local     +	cd /opt/jboss/bin
+chef-client.vs.local     +	sudo -u jboss ./shutdown.sh -S -r 1090 > /dev/null 2>&1 &
+chef-client.vs.local     +        sleep 5
+chef-client.vs.local     +
+chef-client.vs.local     +jboss_pid=$(ps -ef | grep java | grep -v grep | awk '{ printf $2" " }')
+chef-client.vs.local     +        if [ ! -z "${jboss_pid}" ] ; then
+chef-client.vs.local     +            kill -9 ${jboss_pid}
+chef-client.vs.local     +        fi
+chef-client.vs.local     +    fi
+chef-client.vs.local     +}
+chef-client.vs.local     +
+chef-client.vs.local     +case "$1" in
+chef-client.vs.local     +    start)
+chef-client.vs.local     +        start
+chef-client.vs.local     +    ;;
+chef-client.vs.local     +    stop)
+chef-client.vs.local     +        stop
+chef-client.vs.local     +    ;;
+chef-client.vs.local     +    restart)
+chef-client.vs.local     +        stop
+chef-client.vs.local     +	sleep 5
+chef-client.vs.local     +	start
+chef-client.vs.local     +    ;;
+chef-client.vs.local     +    *)
+chef-client.vs.local     +        echo "Usage: '/etc/init.d/jboss {start|stop|restart}'"
+chef-client.vs.local     +        exit 1
+chef-client.vs.local     +    ;;
+chef-client.vs.local     +esac
+chef-client.vs.local     - change mode from '' to '0754'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * execute[start_jboss] action run
+chef-client.vs.local     - execute /etc/init.d/jboss start
+chef-client.vs.local Recipe: jboss::deploy
+chef-client.vs.local   * remote_file[/opt/jboss/tmp/guestbookapp.zip] action create
+chef-client.vs.local     - create new file /opt/jboss/tmp/guestbookapp.zip
+chef-client.vs.local     - update content in file /opt/jboss/tmp/guestbookapp.zip from none to fb578c
+chef-client.vs.local     (new content is binary, diff output suppressed)
+chef-client.vs.local     - change mode from '' to '0755'
+chef-client.vs.local     - change owner from '' to 'jboss'
+chef-client.vs.local     - change group from '' to 'jboss'
+chef-client.vs.local   * execute[extract_guestbookapp] action run
+chef-client.vs.local     - execute unzip -o -d /opt/jboss/server/default/deploy/ -j guestbookapp.zip guestbookapp/guestbookapp.war
+chef-client.vs.local   * execute[restart_jboss] action run
+chef-client.vs.local     - execute /etc/init.d/jboss restart
+chef-client.vs.local Recipe: jboss::firewall
+chef-client.vs.local   * firewall[default] action install
+chef-client.vs.local     - install ufw, create template for /etc/default
+chef-client.vs.local   * apt_package[ufw] action install (up to date)
+chef-client.vs.local   * template[/etc/default/ufw] action create
+chef-client.vs.local     - update content in file /etc/default/ufw from e65377 to 1a8632
+chef-client.vs.local     --- /etc/default/ufw	2014-03-01 01:50:59.000000000 +0400
+chef-client.vs.local     +++ /etc/default/.ufw20151108-3972-142qp76	2015-11-08 22:37:37.615132000 +0400
+chef-client.vs.local     @@ -1,46 +1,15 @@
+chef-client.vs.local      # /etc/default/ufw
+chef-client.vs.local     -#
+chef-client.vs.local     +# This file is managed by Chef.  Do not edit.
+chef-client.vs.local      
+chef-client.vs.local     -# Set to yes to apply rules to support IPv6 (no means only IPv6 on loopback
+chef-client.vs.local     -# accepted). You will need to 'disable' and then 'enable' the firewall for
+chef-client.vs.local     -# the changes to take affect.
+chef-client.vs.local      IPV6=yes
+chef-client.vs.local     +MANAGE_BUILTINS=no
+chef-client.vs.local      
+chef-client.vs.local     -# Set the default input policy to ACCEPT, DROP, or REJECT. Please note that if
+chef-client.vs.local     -# you change this you will most likely want to adjust your rules.
+chef-client.vs.local      DEFAULT_INPUT_POLICY="DROP"
+chef-client.vs.local     -
+chef-client.vs.local     -# Set the default output policy to ACCEPT, DROP, or REJECT. Please note that if
+chef-client.vs.local     -# you change this you will most likely want to adjust your rules.
+chef-client.vs.local      DEFAULT_OUTPUT_POLICY="ACCEPT"
+chef-client.vs.local     -
+chef-client.vs.local     -# Set the default forward policy to ACCEPT, DROP or REJECT.  Please note that
+chef-client.vs.local     -# if you change this you will most likely want to adjust your rules
+chef-client.vs.local      DEFAULT_FORWARD_POLICY="DROP"
+chef-client.vs.local     -
+chef-client.vs.local     -# Set the default application policy to ACCEPT, DROP, REJECT or SKIP. Please
+chef-client.vs.local     -# note that setting this to ACCEPT may be a security risk. See 'man ufw' for
+chef-client.vs.local     -# details
+chef-client.vs.local      DEFAULT_APPLICATION_POLICY="SKIP"
+chef-client.vs.local      
+chef-client.vs.local     -# By default, ufw only touches its own chains. Set this to 'yes' to have ufw
+chef-client.vs.local     -# manage the built-in chains too. Warning: setting this to 'yes' will break
+chef-client.vs.local     -# non-ufw managed firewall rules
+chef-client.vs.local     -MANAGE_BUILTINS=no
+chef-client.vs.local     +IPT_SYSCTL="/etc/ufw/sysctl.conf"
+chef-client.vs.local      
+chef-client.vs.local     -#
+chef-client.vs.local     -# IPT backend
+chef-client.vs.local     -#
+chef-client.vs.local     -# only enable if using iptables backend
+chef-client.vs.local     -IPT_SYSCTL=/etc/ufw/sysctl.conf
+chef-client.vs.local     -
+chef-client.vs.local     -# Extra connection tracking modules to load. Complete list can be found in
+chef-client.vs.local     -# net/netfilter/Kconfig of your kernel source. Some common modules:
+chef-client.vs.local     -# nf_conntrack_irc, nf_nat_irc: DCC (Direct Client to Client) support
+chef-client.vs.local     -# nf_conntrack_netbios_ns: NetBIOS (samba) client support
+chef-client.vs.local     -# nf_conntrack_pptp, nf_nat_pptp: PPTP over stateful firewall/NAT
+chef-client.vs.local     -# nf_conntrack_ftp, nf_nat_ftp: active FTP support
+chef-client.vs.local     -# nf_conntrack_tftp, nf_nat_tftp: TFTP support (server side)
+chef-client.vs.local      IPT_MODULES="nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
+chef-client.vs.local     -
+chef-client.vs.local   * file[create empty /etc/default/ufw-chef.rules] action create
+chef-client.vs.local     - create new file /etc/default/ufw-chef.rules
+chef-client.vs.local     - update content in file /etc/default/ufw-chef.rules from none to fa85ee
+chef-client.vs.local     --- /etc/default/ufw-chef.rules	2015-11-08 22:37:37.667132000 +0400
+chef-client.vs.local     +++ /etc/default/.ufw-chef.rules20151108-3972-1w2lckz	2015-11-08 22:37:37.667132000 +0400
+chef-client.vs.local     @@ -1 +1,2 @@
+chef-client.vs.local     +# created by chef to allow service to start
+chef-client.vs.local   * firewall_rule[http_jboss] action create
+chef-client.vs.local
+chef-client.vs.local   * firewall_rule[ssh] action create
+chef-client.vs.local
+chef-client.vs.local   * firewall[default] action restart
+chef-client.vs.local     * file[/etc/default/ufw-chef.rules] action create
+chef-client.vs.local       - update content in file /etc/default/ufw-chef.rules from fa85ee to 2b28fd
+chef-client.vs.local       --- /etc/default/ufw-chef.rules	2015-11-08 22:37:37.667132000 +0400
+chef-client.vs.local       +++ /etc/default/.ufw-chef.rules20151108-3972-1aiw7cq	2015-11-08 22:37:37.679132000 +0400
+chef-client.vs.local       @@ -1,2 +1,5 @@
+chef-client.vs.local       -# created by chef to allow service to start
+chef-client.vs.local       +# position 1
+chef-client.vs.local       +ufw allow in proto tcp to any port 8080 from any
+chef-client.vs.local       +# position 2
+chef-client.vs.local       +ufw allow in proto tcp to any port 22 from any
+chef-client.vs.local 
+chef-client.vs.local 
+chef-client.vs.local Running handlers:
+chef-client.vs.local Running handlers complete
+chef-client.vs.local Chef Client finished, 31/37 resources updated in 03 minutes 01 seconds

@@ -1,0 +1,34 @@
+{
+  "name": "jboss",
+  "description": "Installs/Configures Jboss App Server",
+  "long_description": "Installs/Configures Jboss App Server",
+  "maintainer": "Alexander Tsitlionok",
+  "maintainer_email": "alex@tsitlionok.ru",
+  "license": "all_rights",
+  "platforms": {
+  },
+  "dependencies": {
+    "apt": ">= 0.0.0",
+    "firewall": ">= 0.0.0",
+    "mysql": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "1.3.1",
+  "source_url": "",
+  "issues_url": ""
+}

@@ -1,0 +1,18 @@
+{
+  "name": "development",
+  "description": "The main development branch",
+  "cookbook_versions": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+	"mysql" : {
+		"mysql_hostname": "127.0.0.1",
+		"mysql_port": "3306",
+		"mysql_root_pass": "extramegapass"
+	},
+	"application" : {
+		"application_repo": "http://www.cumulogic.com/download/Apps/guestbookapp.zip"
+	}
+  }
+}
