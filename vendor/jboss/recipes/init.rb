@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: jboss
+# Recipe:: init
+#
+# Copyright (c) 2015 terghalin, All Rights Reserved.
+
 jboss_user = node["jboss"]["user"]
 
 # Install init script

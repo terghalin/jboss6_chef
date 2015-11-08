@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: jboss
+# Recipe:: deploy
+#
+# Copyright (c) 2015 terghalin, All Rights Reserved.
+
 jboss_path = node["jboss"]["path"]
 jboss_tmp = node["jboss"]["tmp"]
 jboss_user = node["jboss"]["user"]

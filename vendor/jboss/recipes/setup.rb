@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: jboss
+# Recipe:: setup
+#
+# Copyright (c) 2015 terghalin, All Rights Reserved.
+
 jboss_url = node["jboss"]["url"]
 jboss_path = node["jboss"]["path"]
 jboss_tmp = node["jboss"]["tmp"]
@@ -6,6 +12,7 @@ jboss_app = node["application"]["application_repo"]
 jboss_mysql_con_url = node["jboss"]["mysql_con_url"]
 jboss_module_path = node["jboss"]["mysql_modpath"]
 
+# Add ubuntu PPA repository with Oracle java packages
 apt_repository 'webupd8team-java' do
   uri          'ppa:webupd8team/java'
   components ['main']
@@ -13,6 +20,7 @@ apt_repository 'webupd8team-java' do
   action :add
 end
 
+# Install ZIP package
 package "zip"
 if platform_family?("rhel", "centos")
   package "unzip"
@@ -54,7 +62,7 @@ end
 
 # Download jboss installation file
 remote_file "#{jboss_tmp}/jboss.zip" do
-  #force_unlink true
+  force_unlink true
   checksum node['jboss']['checksum']
   source jboss_url
   owner jboss_user

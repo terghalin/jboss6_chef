@@ -2,8 +2,8 @@
   "name": "jboss",
   "description": "Installs/Configures Jboss App Server",
   "long_description": "Installs/Configures Jboss App Server",
-  "maintainer": "Alexander Tsitlionok",
-  "maintainer_email": "alex@tsitlionok.ru",
+  "maintainer": "terghalin",
+  "maintainer_email": "terghalin@gmail.com",
   "license": "all_rights",
   "platforms": {
   },
@@ -28,7 +28,7 @@
   },
   "recipes": {
   },
-  "version": "1.3.1",
+  "version": "1.4.8",
   "source_url": "",
   "issues_url": ""
 }

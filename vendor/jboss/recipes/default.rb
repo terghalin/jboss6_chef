@@ -2,7 +2,7 @@
 # Cookbook Name:: jboss
 # Recipe:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright (c) 2015 terghalin, All Rights Reserved.
 
 include_recipe "jboss::setup"
 include_recipe "jboss::init"

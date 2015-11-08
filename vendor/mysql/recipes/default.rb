@@ -1,3 +1,9 @@
+#
+# Cookbook Name:: MySQL
+# Recipe:: default
+#
+# Copyright (c) 2015 terghalin, All Rights Reserved.
+
 # Install zip if not present
 package "zip"
 if platform_family?("rhel", "centos")
@@ -25,6 +31,6 @@ script "import_sql_dump" do
   cwd "/tmp"
   code <<-EOH
     unzip -o /tmp/guestbookapp.zip
-    mysql -h 127.0.0.1 -u root --password='#{node['mysql']['mysql_root_pass']}' --port=#{node['mysql']['mysql_port']} < /tmp/guestbookapp/guestbookmysqldump.sql
+    mysql -h #{node['mysql']['mysql_hostname']} -u root --password='#{node['mysql']['mysql_root_pass']}' --port=#{node['mysql']['mysql_port']} < /tmp/guestbookapp/guestbookmysqldump.sql
   EOH
 end

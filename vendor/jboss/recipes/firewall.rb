@@ -1,3 +1,8 @@
+#
+# Cookbook Name:: jboss
+# Recipe:: firewall
+#
+# Copyright (c) 2015 terghalin, All Rights Reserved.
 
 firewall 'default'
 # open jboss default 8180 port to tcp traffic
