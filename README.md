@@ -6,7 +6,7 @@ To check this cookbook, just launch vagrant.
 
 Launch Vagrant
 -----
-This cookbook was tested on _Workstation -> Chef Server -> Chef Client_ type of environment.
+Cookbook was tested on _Workstation -> Chef Server -> Chef Client_ type of environment.
 
 You can check it by yourself with Chef Zero - just launch `vagrant up` and after ~10 minutes type on your browser http://localhost:18080/guestbookapp/, that's it.
 
